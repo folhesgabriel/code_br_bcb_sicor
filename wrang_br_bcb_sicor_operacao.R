@@ -10,7 +10,7 @@ library(tidyverse)
 
 
 #ler path dos arquivos
-arquivos_brutos_operacao <- list.files("C:/Users/gabri/OneDrive/vida_profissional/Projetos/amazonDB/sicor_bd/Template Dados/input",
+arquivos_brutos_operacao <- list.files("~/Template Dados/input",
                                        full.names = T,
                                        pattern = 'OPERACAO')
 
@@ -116,14 +116,14 @@ for(arquivo in arquivos_brutos_operacao){
 
     for(ano in unique(file$ano)){
     
-    dir.create(paste0("C:/Users/gabri/OneDrive/vida_profissional/Projetos/amazonDB/sicor_bd/Template Dados/output/microdados_operacao/ano=",ano),
+    dir.create(paste0("~/Template Dados/output/microdados_operacao/ano=",ano),
                showWarnings = FALSE,
                recursive = T)
       
       print(paste0('dir', ano,'criado'))
       
       for(mes in unique(file_particionado$mes)){
-        dir.create(paste0("C:/Users/gabri/OneDrive/vida_profissional/Projetos/amazonDB/sicor_bd/Template Dados/output/microdados_operacao/ano=",ano,"/mes=",mes),
+        dir.create(paste0("~/Template Dados/output/microdados_operacao/ano=",ano,"/mes=",mes),
                    showWarnings = FALSE,
                    recursive = T)
         
@@ -131,7 +131,7 @@ for(arquivo in arquivos_brutos_operacao){
         
   
       for(sigla_uf in unique(file$sigla_uf)){
-         dir.create(paste0("C:/Users/gabri/OneDrive/vida_profissional/Projetos/amazonDB/sicor_bd/Template Dados/output/microdados_operacao/ano=",ano,"/mes=",mes,"/uf=", sigla_uf),
+         dir.create(paste0(~/Template Dados/output/microdados_operacao/ano=",ano,"/mes=",mes,"/uf=", sigla_uf),
                    showWarnings = FALSE,
                    recursive = T)
           
@@ -162,12 +162,12 @@ for(arquivo in arquivos_brutos_operacao){
                                                    paste0(ano-1, "/",ano),
                                                    paste0(ano,"/",ano+1)))
            
-        write.table(file_particionado,
-                    paste0("C:/Users/gabri/OneDrive/vida_profissional/Projetos/amazonDB/sicor_bd/Template Dados/output/microdados_operacao/ano=",ano,"/uf=", sigla_uf,"/microdados_operacao.csv"),
+        write.csv(file_particionado,
+                    paste0("~/Template Dados/output/microdados_operacao/ano=",ano,"/uf=", sigla_uf,"/microdados_operacao.csv"),
                     na = "",
-                    quote = FALSE,
-                    row.names = FALSE,
-                    sep = ",")
+                    fileEncoding = "UTF-8",
+                    row.names = FALSE
+                   )
         print(paste0('base', ano, mes, sigla_uf, "criada"))
         
                     

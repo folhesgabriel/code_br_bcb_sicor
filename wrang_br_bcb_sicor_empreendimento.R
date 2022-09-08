@@ -117,11 +117,10 @@ dir.create("~/Template Dados/output/empreendimento/",
                   recursive = T)
 
 #salvar arquivo tratado
-write.table(empreendimentos,
+write.csv(empreendimentos,
             "~/Template Dados/output/empreendimento/empreendimento.csv",
             na = '',
-            quote = FALSE,
             row.names = FALSE,
-            sep = ",")
+            fileEncoding = "UTF-8")
 
 

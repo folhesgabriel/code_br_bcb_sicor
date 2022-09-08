@@ -64,10 +64,11 @@ for(arquivo in arquivos_brutos_liberacao){
         filter(ano %in% a &
                mes %in% b)
       
-      write.table(file_particionado,
+      write.csv(file_particionado,
                 paste0("~/output/microdados_liberacao/ano=",ano,"/mes=",mes,"/microdados_liberacao.csv"),
                 na = '',
-                row.names = F)
+                row.names = F,
+                fileEncoding = "UTF-8")
     
     print(paste0('base', mes, "criada"))
     

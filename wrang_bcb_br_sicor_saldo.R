@@ -140,9 +140,9 @@ save_tibble <- function(lista,ano,mes){
   write.table(lista_completa,
               paste0("~/Template Dados/output/microdados_saldo/ano=",ano,"/mes=",mes,"/microdados_saldo_",ano,"_",mes,".csv"),
               na = '',
-              quote = FALSE,
-              row.names = FALSE,
-              sep = ",")
+              fileEncoding = "UTF-8",
+              row.names = FALSE
+              )
   
   rm(lista_completa)
 }
